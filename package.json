@@ -2,12 +2,19 @@
   "name": "psighter",
   "version": "1.0.0",
   "description": "PluralSight course downloader",
+  "main": "lib/PSighter.js",
+  "types": "lib/PSighter.d.ts",
   "scripts": {
     "test": "mocha",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "author": "Danilo Carrabino",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evildead/PSighter"
+  },
   "dependencies": {
     "fs-extra": "^7.0.1",
     "puppeteer": "^1.14.0",
