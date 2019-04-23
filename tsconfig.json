@@ -1,0 +1,21 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "declaration": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "outDir": "./lib",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src",
+        "node_modules/@types/puppeteer/index.d.ts",
+        "node_modules/@types/fs-extra/index.d.ts",
+        "node_modules/@types/request-promise/index.d.ts"
+    ]
+}

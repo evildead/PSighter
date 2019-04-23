@@ -1,0 +1,25 @@
+{
+  "name": "psighter",
+  "version": "1.0.0",
+  "description": "PluralSight course downloader",
+  "scripts": {
+    "test": "mocha",
+    "build": "tsc"
+  },
+  "author": "Danilo Carrabino",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "puppeteer": "^1.14.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/puppeteer": "^1.12.3",
+    "@types/request-promise": "^4.1.42",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.1.4"
+  }
+}
