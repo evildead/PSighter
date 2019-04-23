@@ -2,8 +2,8 @@
   "name": "psighter",
   "version": "1.0.1",
   "description": "PluralSight course downloader",
-  "main": "lib/PSighter.js",
-  "types": "lib/PSighter.d.ts",
+  "main": "./lib/PSighter.js",
+  "types": "./lib/PSighter.d.ts",
   "scripts": {
     "test": "mocha",
     "build": "tsc",

@@ -3,7 +3,7 @@ import * as fsExtra from 'fs-extra';
 import * as fs from 'fs';
 import * as request from 'request-promise';
 
-module.exports = class PSighter {
+export class PSighter {
     protected username: string;
     protected pw: string;
     protected baseCourseFolder: string;
