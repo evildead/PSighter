@@ -11,3 +11,40 @@ Have a look at the author's portfolio [Danilo Carrabino](http://myportfolio.dani
 ## How to compile
 
 > _npm run build_
+
+
+## Example usage
+```js
+const {PSighter} = require('psighter');
+
+/// PARAMETERS /////////////////////////////////////////////////////////////////////
+let username = '<username>'; // Pluralsight username
+let pw = '<password>'; // Pluralsight password
+
+// List of courses to download
+// The course name has to be:
+//   https://app.pluralsight.com/library/courses/<courseName>/table-of-contents
+// The baseCourseFolder has to be any writable local machine folder
+let courses = [
+    {
+        courseName: '<courseName1>',
+        baseCourseFolder: './topic1'
+    },
+    {
+        courseName: '<courseName2>',
+        baseCourseFolder: './topic2'
+    }
+];
+////////////////////////////////////////////////////////////////////////////////////
+
+(async () => {
+    // PSighter instance
+    const pSighter = new PSighter(username, pw);
+
+    // download courses
+    for(let i = 0; i < courses.length; ++i) {
+        let course = courses[i];
+        await pSighter.downloadCourse(course.courseName, course.baseCourseFolder);
+    }
+})();
+```

@@ -182,6 +182,8 @@ export class PSighter {
         await fsExtra.ensureDir(`${courseFolder}`);
     
         await page.screenshot({path: `${courseFolder}/screenshotCourse_${Date.now()}.png`});
+
+        fs.writeFileSync(`${courseFolder}/courseDetails_${Date.now()}.json`, JSON.stringify(arrayForVideoDownloads, null, 2));
     
         for(let tmpLesson of arrayForVideoDownloads) {
             await this.downloadLessonVideo(page, courseFolder, tmpLesson.moduleTitle, tmpLesson.lessonTitle, tmpLesson.lessonLink);

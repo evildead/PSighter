@@ -1,6 +1,6 @@
 {
   "name": "psighter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "PluralSight course downloader",
   "main": "./lib/PSighter.js",
   "types": "./lib/PSighter.d.ts",
