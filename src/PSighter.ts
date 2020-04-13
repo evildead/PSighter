@@ -1,6 +1,6 @@
-import * as puppeteer from 'puppeteer';
-import * as fsExtra from 'fs-extra';
 import * as fs from 'fs';
+import * as fsExtra from 'fs-extra';
+import * as puppeteer from 'puppeteer';
 import * as request from 'request-promise';
 
 export class PSighter {
@@ -72,6 +72,12 @@ export class PSighter {
             .replace(/^-+/, '') // Trim - from start of text
             .replace(/-+$/, '') // Trim - from end of text
             .replace(/-/g, '_'); // Replace remaining '-' with '_'
+    }
+
+    private getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
     }
 
     public async downloadCourse(courseName: string, baseCourseFolder: string) {
@@ -196,6 +202,11 @@ export class PSighter {
         // create module's folder if it does not already exist
         let moduleFolder: string = `${courseFolder}/${moduleTitle}`;
         await fsExtra.ensureDir(moduleFolder);
+
+        try {
+            await fsExtra.access(`${moduleFolder}/${lessonTitle}.mp4`);
+            console.log("File already exists, moving to next file");
+          } catch(error){
         
         // go to lesson link
         await page.goto(lessonLink);
@@ -204,10 +215,10 @@ export class PSighter {
         await page.waitForSelector("video");
     
         // wait for navigation
-        await page.waitForNavigation( { waitUntil : 'domcontentloaded' } );
+        // await page.waitForNavigation( { waitUntil : 'domcontentloaded' } );
         
-        // wait for 10 seconds
-        await page.waitFor(10000);
+        // wait for 15 seconds
+        await page.waitFor(15000);
         
         // get video src
         const videoSrc: string = await page.evaluate(() => {
@@ -234,5 +245,10 @@ export class PSighter {
         // download with request and save to file system
         let videoContent: any = await request(options);
         fs.writeFileSync(videoName, videoContent);
+
+        let t = this.getRandomIntInclusive(30 * 1000, 120 * 1000);
+        console.log('Waiting for :' + t/1000 + ' seconds');
+        await page.waitFor(t)
+    }
     }
 }
