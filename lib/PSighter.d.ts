@@ -11,6 +11,7 @@ export declare class PSighter {
     protected checkValidPw(val: string): void;
     protected checkValidBaseCourseFolder(val: string): void;
     private slugifyText;
+    private getRandomIntInclusive;
     downloadCourse(courseName: string, baseCourseFolder: string): Promise<void>;
     protected downloadLessonVideo(page: puppeteer.Page, courseFolder: string, moduleTitle: string, lessonTitle: string, lessonLink: string): Promise<void>;
 }
